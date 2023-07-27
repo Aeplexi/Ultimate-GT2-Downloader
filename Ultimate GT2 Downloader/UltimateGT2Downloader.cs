@@ -62,13 +62,14 @@ namespace Ultimate_GT2_Downloader
         private void DownloadFile(string downloadUrl)
         {
             WebClient client = new WebClient();
-            client.DownloadFile(downloadUrl.ToString(), "Test.exe");
+            client.DownloadFile(downloadUrl, "Test.exe");
         }
 
         private void DownloadButton_Click(object sender, EventArgs e)
         {
             string downloadLink = baseUrl + textBox1.Text;
             DownloadFile(downloadLink);
+            MessageBox.Show(downloadLink);
         }
 
         private void InfoLabel_Click(object sender, EventArgs e)
