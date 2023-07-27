@@ -15,3 +15,20 @@ C:\Users\Mark\Desktop\Ultimate GT2 Downloader\Ultimate GT2 Downloader\obj\Debug\
 C:\Users\Mark\Desktop\Ultimate GT2 Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.pdb
 C:\Users\Mark\Desktop\Ultimate GT2 Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.genruntimeconfig.cache
 C:\Users\Mark\Desktop\Ultimate GT2 Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\ref\Ultimate GT2 Downloader.dll
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\bin\Debug\net6.0-windows\Ultimate GT2 Downloader.exe
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\bin\Debug\net6.0-windows\Ultimate GT2 Downloader.deps.json
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\bin\Debug\net6.0-windows\Ultimate GT2 Downloader.runtimeconfig.json
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\bin\Debug\net6.0-windows\Ultimate GT2 Downloader.dll
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\bin\Debug\net6.0-windows\Ultimate GT2 Downloader.pdb
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.csproj.AssemblyReference.cache
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate_GT2_Downloader.UltimateGT2Downloader.resources
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.csproj.GenerateResource.cache
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.AssemblyInfoInputs.cache
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.AssemblyInfo.cs
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.csproj.CoreCompileInputs.cache
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.dll
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\refint\Ultimate GT2 Downloader.dll
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.pdb
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\Ultimate GT2 Downloader.genruntimeconfig.cache
+C:\Users\Mark\Desktop\Ultimate-GT2-Downloader\Ultimate GT2 Downloader\obj\Debug\net6.0-windows\ref\Ultimate GT2 Downloader.dll

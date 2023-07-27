@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mark\\Desktop\\Ultimate GT2 Downloader\\Ultimate GT2 Downloader\\Ultimate GT2 Downloader.csproj",
+      "projectUniqueName": "C:\\Users\\Mark\\Desktop\\Ultimate-GT2-Downloader\\Ultimate GT2 Downloader\\Ultimate GT2 Downloader.csproj",
       "projectName": "Ultimate GT2 Downloader",
-      "projectPath": "C:\\Users\\Mark\\Desktop\\Ultimate GT2 Downloader\\Ultimate GT2 Downloader\\Ultimate GT2 Downloader.csproj",
+      "projectPath": "C:\\Users\\Mark\\Desktop\\Ultimate-GT2-Downloader\\Ultimate GT2 Downloader\\Ultimate GT2 Downloader.csproj",
       "packagesPath": "C:\\Users\\Mark\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mark\\Desktop\\Ultimate GT2 Downloader\\Ultimate GT2 Downloader\\obj\\",
+      "outputPath": "C:\\Users\\Mark\\Desktop\\Ultimate-GT2-Downloader\\Ultimate GT2 Downloader\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

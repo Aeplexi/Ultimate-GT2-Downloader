@@ -61,16 +61,8 @@ namespace Ultimate_GT2_Downloader
 
         private void DownloadFile(string downloadUrl)
         {
-            WebClient webClient = new WebClient();
-            try
-            {
-                webClient.DownloadFile(downloadUrl + "-Roblox.exe", "C:/Users/Mark/Desktop/Ultimate GT2 Downloader/Ultimate GT2 Downloader/bin/Release/net6.0-windows/Downloads");
-                MessageBox.Show("Successfully downloaded!");
-            }
-            catch (Exception ex)
-            {
-                InfoLabel.Text = "Failed to download file";
-            }
+            WebClient client = new WebClient();
+            client.DownloadFile(downloadUrl.ToString(), "Test.exe");
         }
 
         private void DownloadButton_Click(object sender, EventArgs e)
