@@ -4,6 +4,7 @@ using System;
 using System.Net;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms.VisualStyles;
 
 namespace Ultimate_GT2_Downloader
 {
@@ -64,7 +65,7 @@ namespace Ultimate_GT2_Downloader
         // These are the main functions to download files.
         private void DownloadClient(string hash)
         {
-            isDownloading = true;
+            string[] clientItems = { "Roblox.exe" };
             // Make sure everything exists!
             bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
             if (!directoryExists)
@@ -74,24 +75,22 @@ namespace Ultimate_GT2_Downloader
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\Studio\\");
             }
             string downloadPath = execPath + "\\Downloads\\Client\\";
-            try
+            foreach (string item in clientItems)
             {
-                // Probably not efficient to download all of these like this at a time but its whatever.
-                client.DownloadFile(baseUrl + hash + "-Roblox.exe", downloadPath + "RobloxPlayerLauncher.exe"); // bootstrapper, btw someone please tell me the studio bootstrapper exe name from the cdn to download.
-                client.DownloadFile(baseUrl + hash + "-RobloxApp.exe", downloadPath + "RobloxApp.zip"); // Contains the RobloxPlayerBeta and some other DLLs
-
+                try
+                {
+                    client.DownloadFileTaskAsync(baseUrl + hash + "-" + item, downloadPath + item); // Works i guess? Not very efficient method
+                }
+                catch
+                {
+                    InfoLabel.Text = "Failed to download " + item;
+                }
             }
-            catch
-            {
-                // not yet implemented.
-            }
-            isDownloading = false;
         }
 
         private void DownloadButton_Click(object sender, EventArgs e)
         {
             string hash = textBox1.Text;
-            MessageBox.Show(execPath);
             DownloadClient(hash);
         }
 
