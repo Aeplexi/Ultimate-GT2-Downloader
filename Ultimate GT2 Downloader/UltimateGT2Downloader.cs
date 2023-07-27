@@ -3,14 +3,16 @@ using System.Diagnostics;
 using System;
 using System.Net;
 using System.IO;
+using System.Reflection;
 
 namespace Ultimate_GT2_Downloader
 {
     public partial class UltimateGT2Downloader : Form
     {
         private bool isDownloading = false;
-        public string baseUrl = "https://setup.gametest2.robloxlabs.com/";
-        public static string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location; // exe path
+        public string baseUrl = "http://setup.gametest2.robloxlabs.com/";
+        public static string execPath = AppDomain.CurrentDomain.BaseDirectory;
+        private WebClient client = new WebClient();
         public UltimateGT2Downloader()
         {
             InitializeComponent();
@@ -59,17 +61,24 @@ namespace Ultimate_GT2_Downloader
 
         // Important stuff now, not just visual stuff.
 
-        private void DownloadFile(string downloadUrl)
+        // These are the main functions to download files.
+        private void DownloadClient(string hash)
         {
-            WebClient client = new WebClient();
-            client.DownloadFile(downloadUrl, "Test.exe");
+            try
+            {
+                client.DownloadFile(baseUrl + hash + "-Roblox.exe", execPath + "RobloxPlayerLauncher.exe");
+            }
+            catch
+            {
+                // not yet implemented.
+            }
         }
 
         private void DownloadButton_Click(object sender, EventArgs e)
         {
-            string downloadLink = baseUrl + textBox1.Text;
-            DownloadFile(downloadLink);
-            MessageBox.Show(downloadLink);
+            string hash = textBox1.Text;
+            MessageBox.Show(execPath);
+            DownloadClient(hash);
         }
 
         private void InfoLabel_Click(object sender, EventArgs e)
