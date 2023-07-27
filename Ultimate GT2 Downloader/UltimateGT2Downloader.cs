@@ -84,6 +84,7 @@ namespace Ultimate_GT2_Downloader
                 {
                     byte[] fileBytes = await client.GetByteArrayAsync(uri);
                     File.WriteAllBytes(downloadPath + item, fileBytes);
+                    InfoLabel.Text = "Downloading " + item + "...";
                 }
                 catch
                 {
