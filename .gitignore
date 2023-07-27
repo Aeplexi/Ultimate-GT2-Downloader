@@ -2,3 +2,7 @@
 Ultimate GT2 Downloader/obj/
 Ultimate GT2 Downloader/bin/
 Ultimate GT2 Downloader/.vs/
+*.vsidx
+*.lock
+.vs/Ultimate GT2 Downloader/v17/.suo
+*.v2
