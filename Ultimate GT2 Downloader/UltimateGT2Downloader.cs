@@ -5,6 +5,8 @@ using System.Net;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms.VisualStyles;
+using System.Net.Http;
+using System.Security.Policy;
 
 namespace Ultimate_GT2_Downloader
 {
@@ -13,7 +15,7 @@ namespace Ultimate_GT2_Downloader
         private bool isDownloading = false;
         public string baseUrl = "http://setup.gametest2.robloxlabs.com/";
         public static string execPath = AppDomain.CurrentDomain.BaseDirectory;
-        private WebClient client = new WebClient();
+        private HttpClient client = new HttpClient();
         public UltimateGT2Downloader()
         {
             InitializeComponent();
@@ -63,9 +65,9 @@ namespace Ultimate_GT2_Downloader
         // Important stuff now, not just visual stuff.
 
         // These are the main functions to download files.
-        private void DownloadClient(string hash)
+        private async void DownloadClient(string hash)
         {
-            string[] clientItems = { "Roblox.exe" };
+            string[] clientItems = { "Roblox.exe", "RobloxApp.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip" };
             // Make sure everything exists!
             bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
             if (!directoryExists)
@@ -77,13 +79,15 @@ namespace Ultimate_GT2_Downloader
             string downloadPath = execPath + "\\Downloads\\Client\\";
             foreach (string item in clientItems)
             {
+                Uri uri = new Uri(baseUrl + hash + "-" + item);
                 try
                 {
-                    client.DownloadFileTaskAsync(baseUrl + hash + "-" + item, downloadPath + item); // Works i guess? Not very efficient method
+                    byte[] fileBytes = await client.GetByteArrayAsync(uri);
+                    File.WriteAllBytes(downloadPath + item, fileBytes);
                 }
                 catch
                 {
-                    InfoLabel.Text = "Failed to download " + item;
+                    InfoLabel.Text = "Failed to download " + item + ", retrying...";
                 }
             }
         }
