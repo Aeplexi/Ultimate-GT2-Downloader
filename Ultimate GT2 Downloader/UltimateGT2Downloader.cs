@@ -67,6 +67,7 @@ namespace Ultimate_GT2_Downloader
         // These are the main functions to download files.
         private async void DownloadClient(string hash)
         {
+            isDownloading = true;
             string[] clientItems = { "Roblox.exe", "RobloxApp.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip" };
             // Make sure everything exists!
             bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
@@ -91,12 +92,53 @@ namespace Ultimate_GT2_Downloader
                     InfoLabel.Text = "Failed to download " + item + ", retrying...";
                 }
             }
+            isDownloading = false;
+        }
+        
+        private async void DownloadStudio(string hash)
+        {
+            isDownloading = true;
+            string[] studioItems = { "RobloxStudioLauncherBeta.exe", "RobloxStudio.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-scripts.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip", "BuiltInPlugins.zip"};
+            bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
+            if (!directoryExists)
+            {
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\Client\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\Studio\\");
+            }
+            string downloadPath = execPath + "\\Downloads\\Studio\\";
+            foreach (string item in studioItems)
+            {
+                Uri uri = new Uri(baseUrl + hash + "-" + item);
+                try
+                {
+                    byte[] fileBytes = await client.GetByteArrayAsync(uri);
+                    File.WriteAllBytes(downloadPath + item, fileBytes);
+                    InfoLabel.Text = "Downloading " + item + "...";
+                }
+                catch
+                {
+                    InfoLabel.Text = "Failed to download " + item;
+                }
+            }
+            isDownloading = false;
         }
 
         private void DownloadButton_Click(object sender, EventArgs e)
         {
             string hash = textBox1.Text;
-            DownloadClient(hash);
+            if (!isDownloading)
+            {
+                if (comboBox1.SelectedItem.ToString() == "Client")
+                {
+                    DownloadClient(hash);
+                }
+
+                if (comboBox1.SelectedItem.ToString() == "Studio")
+                {
+                    DownloadStudio(hash);
+                };
+            }
         }
 
         private void InfoLabel_Click(object sender, EventArgs e)
