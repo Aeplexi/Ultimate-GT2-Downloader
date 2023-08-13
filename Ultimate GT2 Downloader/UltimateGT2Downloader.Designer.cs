@@ -36,6 +36,7 @@
             label1 = new Label();
             DownloadButton = new Button();
             InfoLabel = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
             // textBox1
@@ -113,11 +114,21 @@
             InfoLabel.Text = "No info to show currently";
             InfoLabel.Click += InfoLabel_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(147, 209);
+            label2.Name = "label2";
+            label2.Size = new Size(88, 15);
+            label2.TabIndex = 6;
+            label2.Text = "Created by Aep";
+            // 
             // UltimateGT2Downloader
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(388, 289);
+            Controls.Add(label2);
             Controls.Add(InfoLabel);
             Controls.Add(DownloadButton);
             Controls.Add(label1);
@@ -141,5 +152,6 @@
         private Label label1;
         private Button DownloadButton;
         private Label InfoLabel;
+        private Label label2;
     }
 }

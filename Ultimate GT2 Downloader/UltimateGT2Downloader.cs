@@ -77,7 +77,12 @@ namespace Ultimate_GT2_Downloader
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\Client\\");
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\Studio\\");
             }
-            string downloadPath = execPath + "\\Downloads\\Client\\";
+            bool versionDirectoryExists = System.IO.Directory.Exists(execPath + "Downloads" + "\\Client\\" + hash);
+            if (!versionDirectoryExists)
+            {
+                System.IO.Directory.CreateDirectory(execPath + "Downloads" + "\\Client\\" + hash);
+            }
+            string downloadPath = execPath + $"\\Downloads\\Client\\{hash}\\";
             foreach (string item in clientItems)
             {
                 Uri uri = new Uri(baseUrl + hash + "-" + item);
@@ -91,14 +96,15 @@ namespace Ultimate_GT2_Downloader
                 {
                     InfoLabel.Text = "Failed to download " + item + ", retrying...";
                 }
+                InfoLabel.Text = "Success!";
             }
             isDownloading = false;
         }
-        
+
         private async void DownloadStudio(string hash)
         {
             isDownloading = true;
-            string[] studioItems = { "RobloxStudioLauncherBeta.exe", "RobloxStudio.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-scripts.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip", "BuiltInPlugins.zip"};
+            string[] studioItems = { "RobloxStudioLauncherBeta.exe", "RobloxStudio.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-scripts.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip", "BuiltInPlugins.zip", "Qml.zip", "Plugins.zip", "LibrariesQt5.zip", "redist.zip" };
             bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
             if (!directoryExists)
             {
@@ -106,7 +112,12 @@ namespace Ultimate_GT2_Downloader
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\Client\\");
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\Studio\\");
             }
-            string downloadPath = execPath + "\\Downloads\\Studio\\";
+            bool versionDirectoryExists = System.IO.Directory.Exists(execPath + "Downloads" + "\\Studio\\" + hash);
+            if (!versionDirectoryExists)
+            {
+                System.IO.Directory.CreateDirectory(execPath + "Downloads" + "\\Studio\\" + hash);
+            }
+            string downloadPath = execPath + $"\\Downloads\\Studio\\{hash}\\";
             foreach (string item in studioItems)
             {
                 Uri uri = new Uri(baseUrl + hash + "-" + item);
@@ -120,6 +131,7 @@ namespace Ultimate_GT2_Downloader
                 {
                     InfoLabel.Text = "Failed to download " + item;
                 }
+                InfoLabel.Text = "Success!";
             }
             isDownloading = false;
         }
