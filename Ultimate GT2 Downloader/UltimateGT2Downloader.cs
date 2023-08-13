@@ -68,7 +68,7 @@ namespace Ultimate_GT2_Downloader
         private async void DownloadClient(string hash)
         {
             isDownloading = true;
-            string[] clientItems = { "Roblox.exe", "RobloxApp.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip" };
+            string[] clientItems = { "Roblox.exe", "RobloxApp.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip", "RobloxVersion.txt" };
             // Make sure everything exists!
             bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
             if (!directoryExists)
@@ -96,15 +96,16 @@ namespace Ultimate_GT2_Downloader
                 {
                     InfoLabel.Text = "Failed to download " + item + ", retrying...";
                 }
-                InfoLabel.Text = "Success!";
+                //InfoLabel.Text = "Success!";
             }
             isDownloading = false;
+InfoLabel.Text = "Success!";
         }
 
         private async void DownloadStudio(string hash)
         {
             isDownloading = true;
-            string[] studioItems = { "RobloxStudioLauncherBeta.exe", "RobloxStudio.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-scripts.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip", "BuiltInPlugins.zip", "Qml.zip", "Plugins.zip", "LibrariesQt5.zip", "redist.zip" };
+            string[] studioItems = { "RobloxStudioLauncherBeta.exe", "RobloxStudio.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-scripts.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip", "BuiltInPlugins.zip", "Qml.zip", "Plugins.zip", "LibrariesQt5.zip", "redist.zip", "BootstrapperQTStudioVersion.txt" };
             bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
             if (!directoryExists)
             {
@@ -131,8 +132,9 @@ namespace Ultimate_GT2_Downloader
                 {
                     InfoLabel.Text = "Failed to download " + item;
                 }
-                InfoLabel.Text = "Success!";
+                //InfoLabel.Text = "Success!";
             }
+InfoLabel.Text = "Success!";
             isDownloading = false;
         }
 
