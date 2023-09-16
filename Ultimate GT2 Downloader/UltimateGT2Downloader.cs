@@ -65,11 +65,11 @@ namespace Ultimate_GT2_Downloader
         // Important stuff now, not just visual stuff.
 
         // These are the main functions to download files.
+        // Depending on your client, not every file will be there.
         private async void DownloadClient(string hash)
         {
             isDownloading = true;
-            string[] clientItems = { "Roblox.exe", "RobloxApp.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-platform-fonts.zip", "RobloxVersion.txt" };
-            // Make sure everything exists!
+            string[] clientItems = { "Roblox.exe", "RobloxApp.zip", "rbxManifest.txt", "Libraries.zip", "shaders.zip", "content-avatar.zip", "content-fonts.zip", "content-sky.zip", "content-sounds.zip", "content-textures2.zip", "content-translations.zip", "content-textures3.zip", "content-terrain.zip", "content-models.zip", "content-luapackages.zip", "content-platform-fonts.zip", "RobloxVersion.txt", "ssl.zip" };            // Make sure everything exists!
             bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
             if (!directoryExists)
             {
