@@ -1,19 +1,13 @@
 // I need to rewrite this someday.
 using System.Diagnostics;
-using System;
-using System.Net;
-using System.IO;
-using System.Reflection;
-using System.Windows.Forms.VisualStyles;
-using System.Net.Http;
-using System.Security.Policy;
 
 namespace Ultimate_GT2_Downloader
 {
     public partial class UltimateGT2Downloader : Form
     {
         private bool isDownloading = false;
-        public string baseUrl = "http://setup.gametest2.robloxlabs.com/";
+        public string WinUrl = "http://setup.gametest2.robloxlabs.com/";
+        public string MacUrl = "http://setup.gametest2.robloxlabs.com/mac/";
         public static string execPath = AppDomain.CurrentDomain.BaseDirectory;
         private HttpClient client = new HttpClient();
         public UltimateGT2Downloader()
@@ -30,25 +24,13 @@ namespace Ultimate_GT2_Downloader
         {
 
         }
-
-        private void VisitLink()
-        {
-            // Change the color of the link text by setting LinkVisited
-            // to true.
-            linkLabel1.LinkVisited = true;
-            //Call the Process.Start method to open the default browser
-            //with a URL:
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                FileName = "cmd",
-                Arguments = "/c start https://setup.gametest2.robloxlabs.com/DeployHistory.txt"
-            };
-            Process.Start(psi);
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            VisitLink();
+            Process.Start(new ProcessStartInfo("https://setup.gametest2.robloxlabs.com/DeployHistory.txt") { UseShellExecute = true });
+        }
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://setup.gametest2.robloxlabs.com/Mac/DeployHistory.txt") { UseShellExecute = true });
         }
 
 
@@ -76,6 +58,8 @@ namespace Ultimate_GT2_Downloader
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\");
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\Client\\");
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\Studio\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\MacClient\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\MacStudio\\");
             }
             bool versionDirectoryExists = System.IO.Directory.Exists(execPath + "Downloads" + "\\Client\\" + hash);
             if (!versionDirectoryExists)
@@ -85,7 +69,7 @@ namespace Ultimate_GT2_Downloader
             string downloadPath = execPath + $"\\Downloads\\Client\\{hash}\\";
             foreach (string item in clientItems)
             {
-                Uri uri = new Uri(baseUrl + hash + "-" + item);
+                Uri uri = new Uri(WinUrl + hash + "-" + item);
                 try
                 {
                     byte[] fileBytes = await client.GetByteArrayAsync(uri);
@@ -99,8 +83,10 @@ namespace Ultimate_GT2_Downloader
                 //InfoLabel.Text = "Success!";
             }
             isDownloading = false;
-InfoLabel.Text = "Success!";
+            InfoLabel.Text = "Success!";
         }
+
+
 
         private async void DownloadStudio(string hash)
         {
@@ -112,6 +98,8 @@ InfoLabel.Text = "Success!";
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\");
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\Client\\");
                 System.IO.Directory.CreateDirectory(execPath + "Downloads\\Studio\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\MacClient\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\MacStudio\\");
             }
             bool versionDirectoryExists = System.IO.Directory.Exists(execPath + "Downloads" + "\\Studio\\" + hash);
             if (!versionDirectoryExists)
@@ -121,7 +109,7 @@ InfoLabel.Text = "Success!";
             string downloadPath = execPath + $"\\Downloads\\Studio\\{hash}\\";
             foreach (string item in studioItems)
             {
-                Uri uri = new Uri(baseUrl + hash + "-" + item);
+                Uri uri = new Uri(WinUrl + hash + "-" + item);
                 try
                 {
                     byte[] fileBytes = await client.GetByteArrayAsync(uri);
@@ -134,9 +122,84 @@ InfoLabel.Text = "Success!";
                 }
                 //InfoLabel.Text = "Success!";
             }
-InfoLabel.Text = "Success!";
+            InfoLabel.Text = "Success!";
             isDownloading = false;
         }
+        private async void DownloadMacClient(string hash)
+        {
+            isDownloading = true;
+            string[] clientItems = { "Roblox.dmg", "RobloxPlayer.zip" };
+            bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
+            if (!directoryExists)
+            {
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\Client\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\Studio\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\MacClient\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\MacStudio\\");
+            }
+            bool versionDirectoryExists = System.IO.Directory.Exists(execPath + "Downloads" + "\\MacClient\\" + hash);
+            if (!versionDirectoryExists)
+            {
+                System.IO.Directory.CreateDirectory(execPath + "Downloads" + "\\MacClient\\" + hash);
+            }
+            string downloadPath = execPath + $"\\Downloads\\MacClient\\{hash}\\";
+            foreach (string item in clientItems)
+            {
+                Uri uri = new Uri(MacUrl + hash + "-" + item);
+                try
+                {
+                    byte[] fileBytes = await client.GetByteArrayAsync(uri);
+                    File.WriteAllBytes(downloadPath + item, fileBytes);
+                    InfoLabel.Text = "Downloading " + item + "...";
+                }
+                catch
+                {
+                    InfoLabel.Text = "Failed to download " + item + ", retrying...";
+                }
+
+            }
+            isDownloading = false;
+            InfoLabel.Text = "Success!";
+        }
+        private async void DownloadMacStudio(string hash)
+        {
+            isDownloading = true;
+            string[] studioItems = { "RobloxStudio.dmg", "RobloxStudioApp.zip" };
+            bool directoryExists = System.IO.Directory.Exists(execPath + "Downloads");
+            if (!directoryExists)
+            {
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\Client\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\Studio\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\MacClient\\");
+                System.IO.Directory.CreateDirectory(execPath + "Downloads\\MacStudio\\");
+            }
+            bool versionDirectoryExists = System.IO.Directory.Exists(execPath + "Downloads" + "\\MacStudio\\" + hash);
+            if (!versionDirectoryExists)
+            {
+                System.IO.Directory.CreateDirectory(execPath + "Downloads" + "\\MacStudio\\" + hash);
+            }
+            string downloadPath = execPath + $"\\Downloads\\MacStudio\\{hash}\\";
+            foreach (string item in studioItems)
+            {
+                Uri uri = new Uri(WinUrl + hash + "-" + item);
+                try
+                {
+                    byte[] fileBytes = await client.GetByteArrayAsync(uri);
+                    File.WriteAllBytes(downloadPath + item, fileBytes);
+                    InfoLabel.Text = "Downloading " + item + "...";
+                }
+                catch
+                {
+                    InfoLabel.Text = "Failed to download " + item;
+                }
+
+            }
+            InfoLabel.Text = "Success!";
+            isDownloading = false;
+        }
+
 
         private void DownloadButton_Click(object sender, EventArgs e)
         {
@@ -152,6 +215,17 @@ InfoLabel.Text = "Success!";
                 {
                     DownloadStudio(hash);
                 };
+
+                if (comboBox1.SelectedItem.ToString() == "Mac Client")
+                {
+                    DownloadMacClient(hash);
+                }
+                if (comboBox1.SelectedItem.ToString() == "Mac Studio")
+                {
+                    DownloadMacStudio(hash);
+                }
+
+
             }
         }
 
@@ -161,6 +235,11 @@ InfoLabel.Text = "Success!";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

@@ -37,23 +37,26 @@
             DownloadButton = new Button();
             InfoLabel = new Label();
             label2 = new Label();
+            linkLabel2 = new LinkLabel();
             SuspendLayout();
             // 
             // textBox1
             // 
-            textBox1.BackColor = Color.DarkGreen;
+            textBox1.BackColor = Color.Snow;
             textBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox1.ForeColor = SystemColors.Window;
-            textBox1.Location = new Point(12, 25);
+            textBox1.ForeColor = SystemColors.WindowText;
+            textBox1.ImeMode = ImeMode.Off;
+            textBox1.Location = new Point(12, 12);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(364, 23);
+            textBox1.PlaceholderText = "Enter the version hash here.";
+            textBox1.Size = new Size(399, 31);
             textBox1.TabIndex = 0;
-            textBox1.Text = "Enter the version hash here.";
             textBox1.TextAlign = HorizontalAlignment.Center;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // contextMenuStrip1
             // 
+            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
@@ -62,12 +65,12 @@
             linkLabel1.AutoSize = true;
             linkLabel1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             linkLabel1.LinkColor = SystemColors.MenuHighlight;
-            linkLabel1.Location = new Point(28, 253);
+            linkLabel1.Location = new Point(286, 296);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(337, 17);
+            linkLabel1.Size = new Size(143, 28);
             linkLabel1.TabIndex = 1;
             linkLabel1.TabStop = true;
-            linkLabel1.Text = "http://setup.gametest2.robloxlabs.com/DeployHistory.txt\r\n";
+            linkLabel1.Text = "Deploy History";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // comboBox1
@@ -75,19 +78,19 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Client", "Studio" });
-            comboBox1.Location = new Point(129, 82);
+            comboBox1.Items.AddRange(new object[] { "Client", "Studio", "Mac Client", "Mac Studio" });
+            comboBox1.Location = new Point(290, 49);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
+            comboBox1.Size = new Size(121, 33);
             comboBox1.TabIndex = 2;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(73, 85);
+            label1.Location = new Point(231, 52);
             label1.Name = "label1";
-            label1.Size = new Size(34, 15);
+            label1.Size = new Size(53, 25);
             label1.TabIndex = 3;
             label1.Text = "Type:";
             label1.Click += label1_Click_1;
@@ -96,9 +99,9 @@
             // 
             DownloadButton.BackColor = Color.Teal;
             DownloadButton.ForeColor = Color.White;
-            DownloadButton.Location = new Point(97, 161);
+            DownloadButton.Location = new Point(12, 49);
             DownloadButton.Name = "DownloadButton";
-            DownloadButton.Size = new Size(182, 30);
+            DownloadButton.Size = new Size(182, 37);
             DownloadButton.TabIndex = 4;
             DownloadButton.Text = "Download";
             DownloadButton.UseVisualStyleBackColor = false;
@@ -107,9 +110,9 @@
             // InfoLabel
             // 
             InfoLabel.AutoSize = true;
-            InfoLabel.Location = new Point(117, 130);
+            InfoLabel.Location = new Point(215, 352);
             InfoLabel.Name = "InfoLabel";
-            InfoLabel.Size = new Size(142, 15);
+            InfoLabel.Size = new Size(214, 25);
             InfoLabel.TabIndex = 5;
             InfoLabel.Text = "No info to show currently";
             InfoLabel.Click += InfoLabel_Click;
@@ -117,17 +120,31 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(147, 209);
+            label2.Location = new Point(12, 352);
             label2.Name = "label2";
-            label2.Size = new Size(88, 15);
+            label2.Size = new Size(135, 25);
             label2.TabIndex = 6;
             label2.Text = "Created by Aep";
             // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            linkLabel2.LinkColor = SystemColors.MenuHighlight;
+            linkLabel2.Location = new Point(232, 324);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(197, 28);
+            linkLabel2.TabIndex = 7;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "Deploy History (Mac)";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+            // 
             // UltimateGT2Downloader
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(388, 289);
+            ClientSize = new Size(423, 389);
+            Controls.Add(linkLabel2);
             Controls.Add(label2);
             Controls.Add(InfoLabel);
             Controls.Add(DownloadButton);
@@ -153,5 +170,6 @@
         private Button DownloadButton;
         private Label InfoLabel;
         private Label label2;
+        private LinkLabel linkLabel2;
     }
 }
