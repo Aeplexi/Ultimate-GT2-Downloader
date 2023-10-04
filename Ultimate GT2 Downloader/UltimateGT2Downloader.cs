@@ -183,7 +183,7 @@ namespace Ultimate_GT2_Downloader
             string downloadPath = execPath + $"\\Downloads\\MacStudio\\{hash}\\";
             foreach (string item in studioItems)
             {
-                Uri uri = new Uri(WinUrl + hash + "-" + item);
+                Uri uri = new Uri(MacUrl + hash + "-" + item);
                 try
                 {
                     byte[] fileBytes = await client.GetByteArrayAsync(uri);
