@@ -6,8 +6,8 @@ namespace Ultimate_GT2_Downloader
     public partial class UltimateGT2Downloader : Form
     {
         private bool isDownloading = false;
-        public string WinUrl = "http://setup.gametest2.robloxlabs.com/";
-        public string MacUrl = "http://setup.gametest2.robloxlabs.com/mac/";
+        public string WinUrl = "http://setup.gametest2.robloxlabs.com.s3.amazonaws.com/";
+        public string MacUrl = "http://setup.gametest2.robloxlabs.com.s3.amazonaws.com/mac/";
         public static string execPath = AppDomain.CurrentDomain.BaseDirectory;
         private HttpClient client = new HttpClient();
         public UltimateGT2Downloader()
@@ -26,11 +26,11 @@ namespace Ultimate_GT2_Downloader
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://setup.gametest2.robloxlabs.com/DeployHistory.txt") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://setup.gametest2.robloxlabs.com.s3.amazonaws.com/DeployHistory.txt") { UseShellExecute = true });
         }
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://setup.gametest2.robloxlabs.com/Mac/DeployHistory.txt") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://setup.gametest2.robloxlabs.com.s3.amazonaws.com/Mac/DeployHistory.txt") { UseShellExecute = true });
         }
 
 
